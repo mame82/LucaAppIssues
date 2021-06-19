@@ -1,10 +1,14 @@
-# Luca Auffaellikeiten / Issues
+# Luca Auffällikeiten / Issues
+
+_Die Arbeit an diesem Dokument wurde vor Fertigstellung (am 19.06.2021) eingestellt (Details im letzten Abschnitt)_
+
+Author: Marcus Mengs (MaMe82)
 
 Liste von Auffälligkeiten/Problemen mit potentieller Sicherheitsrelevanz in der "Luca"-Fachanwendung.
 
 Versionen zum Betrachtungszeitpunkt
 
-- Backend/Web Services aus `Web` Repository: v1.1.15
+- Backend/Web Services aus `Web` Repository: v1.1.11 (zwischenzeitlich 1.1.12 bis 1.1.16, später 1.2.0 bis 1.2.0)
 - AndroidApp: v1.7.4
 
 Die Ausführungen **haben keinen Anspruch auf Vollständigkeit** und werden ggf. nach Veröffentlichung ergänzt. Das Dokument unternimmt keine Anstregungen Termini, prozessuale oder funktionale Sachverhalte zu erläutern, die sich aus dem veröffentlichten Material zu "Luca" ergeben (Dokumentaion, Quellcode). Das Dokument nimmt an, dass LeserInnen mit dem System vertraut sind.
@@ -1645,3 +1649,4 @@ Hinweise auf nicht dokumentierte Fehler:
   - die selben Eingabedaten können (je nach Gestaltung) verschiedenste React Komponenten crashen (Web Rendering, Data Processing für Export etc..), weil Filterung nicht an den richtigen Stellen erfolgt oder ganz unterlassen wird
 - weitere Externer Libraries, die sensitive Daten vom Luca-Code erhalten aber nicht dafür geeignet sind (vergleichbar zu `react-csv`) ... Es gibt kein sauberes Dependency Management
 - diverse Angriffsmöglichkeiten im Frontend Code des Health-Department der aktuellsten Version (vergleiche hirzu die beiden letzten Video Links in diesem Dokument)
+- Es wurden nicht für alle demonstrierten Sicherheitslücken CVEs requestet
