@@ -1590,7 +1590,36 @@ Zusammenfassen kann man den Patch wie folgt:
 - der Neue Ausgabe-Filter verfehlt seine Wirkung (keine effektive Unterdrückung von CSV Injection)
 - bisherige Filter waren nicht an allen relevanten Stellen platziert - die neuen Filter sind dies auch nicht, werden aber zusätzlich im falschen Kontext verwendet (`SanitizeForCSV` für Excel Exporte (`xlsx`))
 
-## 3.6.x SORMAS Rest API (bis zur aktuellen Version `v1.2.1`)
+**Der Abschnitt wurde nicht abgeschlossen. Es fehlen die Betrachtungen der Fehler bis v1.2.2**
+
+## 3.6.x SORMAS CSV-Export
+
+_Abschnitt wurde nicht mehr begonnen_
+
+Kurzzusammenfassung:
+
+- alle Problemstellungen analog zu CSV Export
+- Filter greifen nicht
+- für derzeit aktuellste Version des Backend Codes (`v1.2.2`) ist CSVB Injection noch immer möglich
+
+## 3.6.x Excel Export
+
+_Abschnitt wurde nicht mehr begonnen_
+
+- Export nutzt externe Library `react-data-export` in Version `0.6.0`
+- Angreifbarkeit wahrscheinlich
+- platzierte "Filterung" ist für CSV-Kontext vorgesehen, nicht XLSX
+
+## 3.6.x WEB-UI Rendering
+
+_Abschnitt wurde nicht mehr begonnen_
+
+- keine Filterung
+- potentiel Template Injection in Subkomponenten, wenn "untrusted user objects" oder deren Properties als React `type`, `props` und/oder `children` benutzt werden sollten (je nach Kombination, vergl. [Übersicht am Ende des Artikels (Link)](https://www.netsparker.com/blog/web-security/cross-site-scripting-react-web-applications/))
+
+## 3.6.x SORMAS Rest API (bis zur aktuellen Version `v1.2.2`)
+
+_Abschnitt wurde nicht mehr abgeschlossen_
 
 Die (Ende Abschnitt 3.4) bereits benannnte Funktion `personsPush` ([Code Link](https://gitlab.com/lucaapp/web/-/blob/v1.2.1/services/health-department/src/network/sormas.js#L35)) ist wie folgt implementiert:
 
@@ -1626,6 +1655,13 @@ Die (Ende Abschnitt 3.4) bereits benannnte Funktion `personsPush` ([Code Link](h
 Für `userData` Objekte wird weder geprüft ob die erwarteten Properties vorhanden sind (ein Fehlen von keys wie `"fn"`, `"ln"` usw. würde vermutlich einen Crash im "Health Department Frontend" auslösen und die Auswertung von Gästelisten unmöglich machen), noch werden die Daten (Values) vorhandenen Properties geprüft. Durch Luca-Nutzer beliebig gestaltbare Daten, werden hier ungefiltert and die API eines nachgeschalteten Fachverfahrens weitergegeben (welches hoffentlich sauber mit dem Input umgeht).
 
 Um im Bild der Wasserhähne zu bleiben: Es gibt keine Mischbatterien, aber auch keine Durchlauferhitzer mehr. Sie lassen Ihrem Kind trotzdem ein Bad ein, setzen es ohne weitere Prüfung in die Badewanne und hoffen, dass es mit der Temperatur umgehen kann, die Sie gar nicht kennen.
+
+## 3.7 Cross-Context Effekte aufgrund falscher Platzierung von Daten im "State" von ReactJS Komponenten
+
+_Abschnitt wurde nicht mehr begonnen_
+
+- Single-Source-Of-Trueth state in ReactJS Komponenten verursacht Crashes in verschiedenen Ausgabekontexten (je nach Input, z.B. im Render Kontext oder bei Vorbereiten von Exports)
+- Wird für einen Kontext ein Filter angepasst, so dass ein Absturz verhindert wird, wird u.U. die Ausnutzung fehlender Filterung in einem anderen Output-Kontext möglich
 
 # Einstellung der Arbei an diesem Text
 
